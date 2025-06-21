@@ -73,7 +73,7 @@ def main():
 
     # -------- Sidebar Controls --------
     st.sidebar.header("⚙️ Settings")
-    model_path = st.sidebar.text_input("Model path (.pth)", "cvae_mnist_50.pth")
+    model_path = st.sidebar.text_input("Model path (.pth)", "models/cvae_mnist_100.pth")
     num_samples = st.sidebar.number_input("Number of variations", min_value=1, max_value=10, step=1, value=5, format="%d", key="sample_input")
 
     if st.sidebar.button("🔄 Load Model"):
