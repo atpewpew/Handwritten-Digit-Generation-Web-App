@@ -77,7 +77,7 @@ def main():
         st.markdown("Adjust settings and load your model here.")
         st.divider()
 
-        model_path = st.text_input("Model path (.pth)", "models\\cvae_mnist_100.pth")
+        model_path = st.text_input("Model path (.pth)", "models/cvae_mnist_100.pth")
         num_samples = st.number_input("Number of variations", min_value=1, max_value=10, step=1, value=5, format="%d", key="sample_input")
 
         if st.button("🔄 Load Model"):
