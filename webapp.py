@@ -71,20 +71,25 @@ def main():
 
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-    # -------- Sidebar Controls --------
-    st.sidebar.header("⚙️ Settings")
-    model_path = st.sidebar.text_input("Model path (.pth)", "models/cvae_mnist_100.pth")
-    num_samples = st.sidebar.number_input("Number of variations", min_value=1, max_value=10, step=1, value=5, format="%d", key="sample_input")
+       # -------- Sidebar Controls --------
+    with st.sidebar:
+        st.markdown("## 📌 Control Panel")
+        st.markdown("Adjust settings and load your model here.")
+        st.divider()
 
-    if st.sidebar.button("🔄 Load Model"):
-        try:
-            model = ConditionalVAE().to(device)
-            model.load_state_dict(torch.load(model_path, map_location=device))
-            model.eval()
-            st.session_state['model'] = model
-            st.success("✅ Model loaded successfully.")
-        except Exception as e:
-            st.error(f"❌ Failed to load model: {e}")
+        model_path = st.text_input("Model path (.pth)", "models\\cvae_mnist_100.pth")
+        num_samples = st.number_input("Number of variations", min_value=1, max_value=10, step=1, value=5, format="%d", key="sample_input")
+
+        if st.button("🔄 Load Model"):
+            try:
+                model = ConditionalVAE().to(device)
+                model.load_state_dict(torch.load(model_path, map_location=device))
+                model.eval()
+                st.session_state['model'] = model
+                st.success("✅ Model loaded successfully.")
+            except Exception as e:
+                st.error(f"❌ Failed to load model: {e}")
+
 
     # -------- Main Area Controls --------
     st.subheader("🔢 Select the Digit to Generate")
