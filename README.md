@@ -49,7 +49,9 @@ A Conditional VAE (cVAE) is a generative model that learns a latent space for da
 
 ├── app.py # Streamlit app<br>
 ├── models/<br>
-│ └── cvae_mnist_50.pth # Trained Conditional VAE weights<br>
+│ ├── cvae_mnist_50.pth # 50-epoch model<br>
+│ ├── cvae_mnist_100.pth # 100-epoch model (default)<br>
+│ └── cvae_mnist_500.pth # 500-epoch model<br>
 ├── requirements.txt # All dependencies<br>
 └── README.md<br>
 
